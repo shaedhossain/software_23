@@ -24,3 +24,9 @@ def relu(x):
 def softmax(x):
   expp= np.exp(x)
   return expp/np.sum(expp,axis=0)
+
+def derivative_tanh(x):
+  return (1-np.power(x,2))
+
+def derivative_relu(x):
+  return np.array(x>0, dtype=np.float32)
