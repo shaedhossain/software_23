@@ -43,3 +43,23 @@ def initialize_para(n_x, n_h,n_y):
                'w2':w2,
                'b2':b2}
   return parameters
+
+def forward(x, parameters):
+  w1=parameters['w1']
+  b1=parameters['b1']
+  w2=parameters['w2']
+  b2=parameters['b2']
+
+  z1=np.dot(w1,x)+b1
+
+  a1=tanh(z1)
+
+  z2=np.dot(w2,a1)+b2
+
+  a2=softmax(z2)
+
+  cache={'z1':z1,
+         'a1':a1,
+         'z2':z2,
+         'a2':a2}
+  return  cache
