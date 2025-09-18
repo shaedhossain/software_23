@@ -75,3 +75,53 @@ print("Hello, Git! Updated version.")
 print("Hello, Git! Updated version.")
 print("Hello, Git! Updated version.")
 print("again into new_b branch.")
+
+def backpro( x,y , parameters, forward):
+  w1= parameters['w1']
+  b1= parameters['b1']
+  w2= parameters['w2']
+  b2= parameters['b2']
+
+  a1=forward['a1']
+  a2=forward['a2']
+
+  m= x.shape[1]
+  
+  dz2=(a2-y)
+  dw2=(1/m)*np.dot(dz2,a1.T)
+  db2=(1/m)*np.sum(dz2,axis=1,keepdims=True)
+
+  dz1=(1/m)*np.dot(w2.T,dz2)*derivative_tanh(a1)
+  dw1=(1/m)*np.dot(dz1,x.T)
+  db1=(1/m)*np.sum(dz1,axis=1,keepdims=True)
+
+  grad= {
+      'dw1':dw1,
+      'db1':db1,
+      'dw2':dw2,
+      'db2':db2
+  }
+  return grad
+
+
+def update_para(parameters, grad, learning_rate):
+  w1=parameters['w1']
+  b1=parameters['b1']
+  w2=parameters['w2']
+  b2=parameters['b2']
+
+  dw1=grad['dw1']
+  db1=grad['db1']
+  dw2=grad['dw2']
+  db2=grad['db2']
+
+  w1=w1-learning_rate*dw1
+  b1=b1-learning_rate*db1
+  w2=w2-learning_rate*dw2
+  b2=b2-learning_rate*db2
+
+  parameters= {'w1':w1,
+               'b1':b1,
+               'w2':w2,
+               'b2':b2}
+  return parameters
