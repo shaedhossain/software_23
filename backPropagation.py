@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
 x_train= np.loadtxt('files/train_X.csv', delimiter=',').T
 y_train= np.loadtxt('files/train_label.csv',delimiter=',').T
 
