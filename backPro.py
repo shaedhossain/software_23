@@ -63,3 +63,8 @@ def forward(x, parameters):
          'z2':z2,
          'a2':a2}
   return  cache
+
+def cost(a2,y):
+  m=y.shape[1]
+  cost= -(1/m)*np.sum(np.sum(y*np.log(a2),1))
+  return cost
