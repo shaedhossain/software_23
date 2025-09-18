@@ -125,3 +125,27 @@ def update_para(parameters, grad, learning_rate):
                'w2':w2,
                'b2':b2}
   return parameters
+
+
+def model(x,y,n_h,learning_rate, iteration):
+  n_x= x.shape[0]
+  n_y=y.shape[0]
+  cost_list=[]
+  parameters= initialize_para(n_x,n_h,n_y)
+
+  for i in range(iteration):
+    forwardd= forward(x,parameters)
+    costt= cost(forwardd['a2'],y)
+    gradd=backpro(x,y,parameters,forwardd)
+    parameters=update_para(parameters,gradd,learning_rate)
+    cost_list.append(costt)
+    if(i%(iteration/10)==0):
+      print("cost after ", i , "iteratin is: ", costt)
+
+  return parameters, cost_list
+
+iteration = 500
+n_h= 1000
+learning_rate=0.01
+parameters,cost_list=model(x_train,y_train,n_h,learning_rate,iteration)
+
