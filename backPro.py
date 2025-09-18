@@ -149,3 +149,32 @@ n_h= 1000
 learning_rate=0.01
 parameters,cost_list=model(x_train,y_train,n_h,learning_rate,iteration)
 
+
+def accuracy(inp, labels, parameters):
+    forward_cache= forward(inp,parameters)
+    a_out = forward_cache['a2']
+
+    a_out= np.argmax(a_out,axis=0)
+
+    y_out= np.argmax(labels,axis=0)
+
+    a_out==y_out
+
+    acc= np.mean(a_out==y_out)*100
+    return acc
+
+print("Accuracy of train dataset ", accuracy(x_train,y_train,parameters))
+print("Accuracy of test dataset ", accuracy(x_test,y_test,parameters))
+
+
+
+index= random.randrange(0, x_test.shape[1])
+plt.imshow(x_test[:,index].reshape(28,28), cmap='gray')
+plt.show()
+
+forward_cache= forward(x_test[:,index].reshape(x_test.shape[0],1),parameters)
+a_out = forward_cache['a2']
+a_out= np.argmax(a_out,axis=0)
+
+print("our model says it : ", a_out[0])
+
