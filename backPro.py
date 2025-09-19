@@ -178,3 +178,9 @@ a_out= np.argmax(a_out,axis=0)
 
 print("our model says it : ", a_out[0])
 
+
+print("our model says it : ", a_out[0])
+print("our model says it : ", a_out[0])
+print("change to see the new_b what is going on")
+
+

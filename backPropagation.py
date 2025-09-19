@@ -30,3 +30,9 @@ def derivative_tanh(x):
 
 def derivative_relu(x):
   return np.array(x>0, dtype=np.float32)
+
+print("Hello, Git! Updated version.")
+print("Hello, Git! Updated version.")
+print("Hello, Git! Updated version.")
+print("Hello, Git! Updated version.")
+print("new branch new check")
